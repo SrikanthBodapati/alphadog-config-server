@@ -1,0 +1,22 @@
+spring:
+  application:
+   name: config-server
+  profiles:
+    active: local, cloud
+  cloud:
+    config:
+      enabled: true
+      server:
+          git: 
+            uri: https://github.com/SrikanthBodapati/centralconfig
+            username: ${vcap.mypick.config.repo.username:SrikanthBodapati}
+            password: venki@4185
+          prefix: /config    
+security:
+  user:
+    password: admin
+    name: admin     
+encrypt:
+  key: ${ENCRYPT_KEY:defaultkey} 
+server:
+  port: 8761
